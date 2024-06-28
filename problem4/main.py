@@ -1,6 +1,17 @@
 def count_item_and_sort(items):
-    result = ""
+    items = sorted(items)
+
+    frequensi = {}
+    for item in items:
+        if item in frequensi:
+            frequensi[item] += 1
+        else:
+            frequensi[item] = 1
+
+    shortted_freq = sorted(frequensi.items(), key=lambda x: x[1])
+    result = " ".join([f"{key}->{value}" for key, value in shortted_freq])
     return result
+
 
 if __name__ == "__main__":
     print(count_item_and_sort(["js", "js", "golang", "ruby", "ruby", "js", "js"]))
